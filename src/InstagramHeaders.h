@@ -320,7 +320,6 @@
 @end
 
 @interface IGBadgedNavigationButton : UIView
-- (void)addLongPressGestureRecognizer; // new
 @end
 
 @interface IGSearchBar : UIView
