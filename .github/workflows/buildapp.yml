@@ -97,7 +97,7 @@ jobs:
             
                 # Download Instagram IPA
                 mkdir -p packages
-                /tmp/scinsta-venv/bin/gdown --fuzzy "$Instagram_URL" \
+                /tmp/scinsta-venv/bin/gdown "$Instagram_URL" \
                   -O packages/com.burbn.instagram.ipa
             
                 # Verify downloaded file
