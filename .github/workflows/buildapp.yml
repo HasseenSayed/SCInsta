@@ -88,8 +88,6 @@ jobs:
             - name: Prepare Instagram IPA
               run: |
                 cd main
-            
-                cd main
 
                 # Create an isolated Python environment
                 python3 -m venv /tmp/scinsta-venv
