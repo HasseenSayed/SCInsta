@@ -89,12 +89,17 @@ jobs:
               run: |
                 cd main
             
-                # Install Google Drive downloader
-                python3 -m pip install gdown
+                cd main
+
+                # Create an isolated Python environment
+                python3 -m venv /tmp/scinsta-venv
+            
+                # Install gdown inside the virtual environment
+                /tmp/scinsta-venv/bin/python -m pip install gdown
             
                 # Download Instagram IPA
                 mkdir -p packages
-                python3 -m gdown --fuzzy "$Instagram_URL" \
+                /tmp/scinsta-venv/bin/gdown --fuzzy "$Instagram_URL" \
                   -O packages/com.burbn.instagram.ipa
             
                 # Verify downloaded file
