@@ -88,11 +88,27 @@ jobs:
             - name: Prepare Instagram IPA
               run: |
                 cd main
-
+            
+                # Install Google Drive downloader
+                python3 -m pip install gdown
+            
+                # Download Instagram IPA
                 mkdir -p packages
-                wget "$Instagram_URL" --no-verbose -O packages/com.burbn.instagram.ipa
-
-                ls -la packages
+                python3 -m gdown --fuzzy "$Instagram_URL" \
+                  -O packages/com.burbn.instagram.ipa
+            
+                # Verify downloaded file
+                echo "Checking downloaded IPA..."
+                ls -lh packages/com.burbn.instagram.ipa
+                file packages/com.burbn.instagram.ipa
+            
+                # Verify ZIP integrity
+                unzip -tq packages/com.burbn.instagram.ipa
+            
+                # Verify iOS application structure
+                unzip -Z1 packages/com.burbn.instagram.ipa | grep -qE '^Payload/[^/]+\.app/'
+            
+                echo "Instagram IPA downloaded and verified successfully!"
                 
               env:
                 THEOS: ${{ github.workspace }}/theos
