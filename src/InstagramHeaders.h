@@ -50,6 +50,9 @@
 @interface IGProfileMenuSheetViewController :  IGViewController
 @end
 
+@interface IGProfileViewController : UIViewController
+@end
+
 @interface IGTabBar: UIView
 @end
 
